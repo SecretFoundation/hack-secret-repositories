@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  color: #fff;
+}
+
+.gradient {
+  background: linear-gradient(264.28deg, #dec7ff -38.2%, #5c27fe 103.12%);
+}
+.gradient-secondary {
+  background: transparent;
+  border: 1px solid #dec7ff;
+  color: #dec7ff;
+}
+
+.leading-purple {
+  color: #d5d6fa;
+}
+
+.gradient-trans {
+  background: linear-gradient(264.28deg, #dec7ff88 -38.2%, #5d27fe78 103.12%);
+}
+
+.bg-dark {
+  background-color: #161833a0;
+}
+
+.purple-text {
+  color: #9f80ff;
+}
+
+.shape {
+  background: radial-gradient(
+    34.98% 34.98% at 50% 50%,
+    #725bda 0,
+    rgba(6, 19, 45, 0) 100%
+  );
+
+  content: "";
+  height: 2000px;
+  left: -60%;
+  opacity: 0.5;
+  position: absolute;
+  top: -40%;
+  width: 2000px;
+  z-index: -1;
+}
+
+.shape.right {
+  left: auto;
+  right: -60%;
+  top: -40%;
+}
+
+.shape.s3 {
+  background: linear-gradient(239.67deg, #0057ff -10.29%, #7ff805 197.14%);
+  -webkit-filter: blur(150px);
+  filter: blur(150px);
+  height: 800px;
+  left: auto !important;
+  mix-blend-mode: normal;
+  opacity: 0.6;
+  right: -20%;
+  top: 15% !important;
+  width: 800px;
+  z-index: -2;
+}
+
+.sidebar-tab {
+  border: 1px solid #d2b7f8;
+  color: #d2b7f8;
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  min-width: 230px;
+}
+
+.sidebar-tab.active {
+  background-color: #d2b7f8a6;
+  color: #fff;
+}
+
+.transition {
+  transition: all 0.3s ease-in-out;
+}
+.transition:hover {
+  transform: scale(1.1);
+}
+
+.test {
+  color: #161833a0;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.gradient-border {
+  border: 1px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(
+    264.28deg,
+    #dec7ff -38.2%,
+    #5c27fe 103.12%
+  );
+  border-radius: 10px;
+  background-color: #161833eb;
+}
+
+input,
+textarea {
+  background: transparent;
+  border: 1px solid #d2b7f8;
+  padding: 1rem;
+  border-radius: 10px;
+  outline: none;
+  margin-top: 5px;
+}
