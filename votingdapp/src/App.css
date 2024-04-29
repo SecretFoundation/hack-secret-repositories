@@ -1,0 +1,75 @@
+.app-container {
+  background-color: #fef5e7;
+  padding: 20px;
+  text-align: center;
+}
+
+.app-content {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #3d32ed;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.header-section-1 {
+  flex: 3;
+}
+
+.section-divider {
+  border: 2px solid #7b1fa2;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.candidates-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.candidate-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+.candidate-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 10px;
+  width: 80%; 
+  max-width: 800px; 
+  height: auto; 
+}
+
+
+
+.connect-wallet-button-container {
+  text-align: right;
+}
+
+button {
+  background-color: #7b1fa2;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5e0b84;
+}
+
+

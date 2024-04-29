@@ -1,0 +1,35 @@
+[
+    {  "id": 1, 
+      "title": "Elections for President",
+      "description": "Vote for Your Favorite Candidate!",
+      "duration": 604800,
+      "isActive": true,
+      "candidates": [
+        {
+          "name": "Candidate1",
+          "imageCID": "Qmc6sCETUe5oYcdwpBPV5ZXdYyLZgPasQ3k6D9JTFWFWHr",
+          "partyName": "PartyA",
+          "partySymbolCID": "QmWHufdWuF8QtYu2AddEMYuS7T8ixR47bULa7W79bMLFnv"
+        },
+        {
+          "name": "Candidate2",
+          "imageCID": "QmPAA2mqmmUqvbvqoisseSr9TXa8vpPmztxGTVbLe3NYcu",
+          "partyName": "PartyA",
+          "partySymbolCID": "QmSuJxaMWDnGucN4jxZQih86Dxhoz8q9SWMP1MsiraDyzm"
+        },
+        {
+          "name": "Candidate3",
+          "imageCID": "QmV2sXnjHTxvj8Zx9vA3FS1APNXkmg5Gx8Epj3WU1fANJS",
+          "partyName": "PartyA",
+          "partySymbolCID": "QmcQiWu1rPEgM3m3d8x77jisfvuUGcDoTBkGGAzph9ut8J"
+        },
+        {
+          "name": "Candidate4",
+          "imageCID": "QmQezp2vYHyDXiVsdbfpJ5APbYRQ4hSib2HDi9NZhpRis1",
+          "partyName": "PartyA",
+          "partySymbolCID": "QmenoA2URRRAmTVL4T9s7dMexETcJxH8dWbAntfHbJ24C6"
+        }
+      ]
+    }
+  ]
+  
