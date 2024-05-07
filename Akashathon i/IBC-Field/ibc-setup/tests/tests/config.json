@@ -1,0 +1,12 @@
+{
+    "ibc_info": {
+        "secret_channel": "channel-0",
+        "consumer_channel": "channel-0",
+        "ibc_denom": "ibc/834829648E6B51B21713C76E0C1836727DCE221CE3DC8B3AA7BB11F55428887A"
+    },
+    "contract_info": {
+        "code_id": 1,
+        "code_hash": "4870a18d4fe8fbf36abc842ab1e54400e24c2c6618486cdaf801ab8d5f725f6f",
+        "contract_address": "secret1mfk7n6mc2cg6lznujmeckdh4x0a5ezf6hx6y8q"
+    }
+}

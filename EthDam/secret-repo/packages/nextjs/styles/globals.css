@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Flow+Block&display=swap');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root,
+[data-theme] {
+  background: oklch(var(--b2));
+}
+
+body {
+  min-height: 100vh;
+  background-color: #0A0A0A
+}
+
+main {
+  background-color: #0A0A0A;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+.btn {
+  @apply shadow-md;
+}
+
+.btn.btn-ghost {
+  @apply shadow-none;
+}
+
+.input:focus, .input:focus-within, .textarea:focus, .textarea:focus-within {
+  outline-width: 1px !important;
+  outline-offset: 1px !important;
+}
+
+
+/* HEADER */
+.quadratic-header a {
+  font-family: "Sen", sans-serif !important;
+  font-size: 1.4rem;
+  color: #FBF7F9;
+}
+
+.quadratic-header a.header-active {
+  color: #94FEBE;
+}
+
+.quadratic-header a:hover {
+  color: #94FEBE;
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+  background-color: transparent;
+}
+
+/* MENU ICON */
+.quadratic-header label {
+  color: #FBF7F9;
+}
+
+.quadratic-header menu .dropdown-content {
+  height: 100vh;
+}
+
+.landing h1 {
+  font-family: "VT323", sans-serif;
+  font-size: 7rem;
+  word-break: break-word;
+  color: #FBF7F9;
+}
+
+.landing h1 .flow-block {
+  font-family: "Flow Block", system-ui;
+  font-size: 5rem;
+}
+
+
+.landing h1 .flow-block:hover {
+  font-family: "VT323", sans-serif;
+  font-weight: 400;
+  font-size: 7rem;
+}
+
+@media (max-width: 660px) {
+  .landing h1 {
+    font-family: "VT323", sans-serif;
+    font-size: 5rem;
+  }
+  
+  .landing h1 .flow-block {
+    font-family: "Flow Block", system-ui;
+    font-size: 4rem;
+  }
+  
+  
+  .landing h1 .flow-block:hover {
+    font-family: "VT323", sans-serif;
+    font-weight: 400;
+    font-size: 5rem;
+  }
+}
+
+/* SHADOWS */
+.q-shadow {
+  box-shadow: 4px 4px 0 1px #FFFFFF;
+}
+
+/* PROJECT CARD */
+.project-card {
+  color: white;
+  font-family: "Sen", sans-serif !important;
+}
+
+.project-card h3 {
+  font-family: "VT323", sans-serif;
+  color: white;
+  font-size: 2rem;
+}
+
+.project-card p {
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+}
+
+.vote .project-card span {
+  color: white;
+}
+
+.fund-button:hover {
+  color: #94FEBE !important;
+}
+
+/* CREATING ROUND FORM */
+.create-round label span {
+  font-family: "VT323", sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.create-round input, .create-round textarea {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-family: "Sen", sans-serif !important;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  /* filter: blur(5px); */
+}
+
+.body-text, .fund-button {
+  font-family: "Sen", sans-serif !important;
+  letter-spacing: 1.5px;
+}
+
+.fund-button {
+  color: white;
+}
+
+/* ROUND CARD */
+.round-card  {
+  font-family: "Sen", sans-serif !important;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.round-card.active h6 {
+  color: #94FEBE !important;
+}
+
+.round-card.card.image-full:before {
+  border-radius: 0;
+}
+
+.round-card figure {
+  min-height: 150px;
+}
+
+.round-card.card.image-full:before {
+  background-color: transparent !important;
+}
+
+.donate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 30vh;
+}
+
+button {
+  font-family: "Sen", sans-serif !important;
+  letter-spacing: 1.5px;
+}
+
+.vote button {
+  letter-spacing: 2px;
+  font-size: 1.4rem;
+}
+
+.vote button:hover {
+  color: #94FEBE;
+}
+
+.vote span {
+  font-family: "Sen", sans-serif !important;
+  letter-spacing: 1.5px;
+  font-size: small;
+  color: #94FEBE;
+}
+
+/* SUCCESS */
+.success h1 {
+  font-family: "VT323", sans-serif;
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.success {
+  font-family: "Sen", sans-serif !important;
+  letter-spacing: 1.5px;
+  color: white;
+}
+
+.metric-card {
+  max-width: 250px;
+  text-align: center;
+  background-color: #0F0F0F;
+}
+
+.metric-card h3 {
+  font-family: "VT323", sans-serif;
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.metric-card {
+  font-family: "Sen", sans-serif !important;
+  letter-spacing: 1.5px;
+  color: white;
+  font-size: 5rem;
+  color: #94FEBE;
+}
+
+.metric-card strong {
+  color: transparent; /* Makes the text color transparent */
+    -webkit-text-stroke: 1px #94FEBE; 
+}
+
+.q-login-button div button {
+  background-color: white !important;
+  border-radius: 0 !important;
+  border-color: black !important;
+  border-width: 1px  !important;
+  border-style: solid !important;
+  box-shadow: 4px 4px 0 1px #FFFFFF !important;
+  color: black !important;
+}
+
+.switch-network li button {
+  border: none !important;
+  box-shadow: none !important;
+}
