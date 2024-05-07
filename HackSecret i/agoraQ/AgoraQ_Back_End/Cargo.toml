@@ -1,0 +1,45 @@
+[package]
+authors = ["agoraq"]
+edition = "2021"
+name = "agoraq"
+version = "0.2.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+codegen-units = 1
+debug = false
+debug-assertions = false
+incremental = false
+lto = true
+opt-level = 3
+overflow-checks = true
+panic = 'abort'
+rpath = false
+
+[features]
+default = []
+# for quicker tests, cargo test --lib
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+
+[dependencies]
+cosmwasm-schema = "1.0.0"
+cosmwasm-std = {git = "https://github.com/scrtlabs/cosmwasm", tag = "v1.1.9-secret"}#if errors, comment out ", features..." , features = ["stargate", "ibc3"]
+cosmwasm-storage = {git = "https://github.com/scrtlabs/cosmwasm", tag = "v1.1.9-secret"}
+schemars = {version = "0.8.11"}
+serde = {version = "1.0"}
+thiserror = {version = "1.0"}
+
+# Uncomment these for some common extra tools
+secret-toolkit = {git = "https://github.com/scrtlabs/secret-toolkit", tag = "v0.8.0"}
+# cw-storage-plus = { version = "1.0.1", default-features = false }
+
+# [patch.crates-io]
+# uncomment this if you use cw-storage-plus
+# cosmwasm-std = { git = "https://github.com/scrtlabs/cosmwasm", tag = "v1.1.9-secret" }
+
+[[bin]]
+name = "schema"
+required-features = ["schema"]

@@ -1,0 +1,808 @@
+<section class="content">
+  <div class="container-fluid">
+    @for (breadscrum of breadscrums; track breadscrum) {
+    <div class="block-header">
+      <!-- breadcrumb -->
+<!--      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">-->
+<!--      </app-breadcrumb>-->
+    </div>
+    }
+    <!-- Enthusiast stats -->
+
+      <div class="row" *ngIf="userAccount?.userClass === 'enthusiast'">
+          <div class="col-12 col-sm-6 col-md-3">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                          <div>
+                              <h3>Amount Raised Today</h3>
+                          </div>
+                          <h4 class="text-info">$170</h4>
+                      </div>
+                      <div class="card-content mt-2">
+                          <div class="progress skill-progress m-b-5 w-100">
+                              <div class="progress-bar l-bg-purple width-per-45" role="progressbar" aria-valuenow="45"
+                                   aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </div>
+                      <div class="d-flex justify-content-between mt-2">
+                          <p class="text-muted mb-0">Projects funded</p>
+                          <p class="text-muted mb-0">45%</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                          <div>
+                              <h3>My Voting Power</h3>
+                              <p class="text-muted">Earned VS Donated</p>
+                          </div>
+                          <h4 class="text-success">120</h4>
+                      </div>
+                      <div class="card-content mt-2">
+                          <div class="progress skill-progress m-b-5 w-100">
+                              <div class="progress-bar l-bg-orange width-per-45" role="progressbar" aria-valuenow="25"
+                                   aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </div>
+                      <div class="d-flex justify-content-between mt-2">
+                          <p class="text-muted mb-0">25%</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                          <div>
+                              <h3>New Proposals</h3>
+                              <p class="text-muted">New This Hour</p>
+                          </div>
+                          <h4 class="text-danger">15</h4>
+                      </div>
+                      <div class="card-content mt-2">
+                          <div class="progress skill-progress m-b-5 w-100">
+                              <div class="progress-bar l-bg-cyan width-per-45" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+                                   aria-valuemax="100"></div>
+                          </div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                          <p class="text-muted mb-0">Funding progress</p>
+                          <p class="text-muted mb-0">50%</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                          <div>
+                              <h3>New Enthusiasts</h3>
+                              <p class="text-muted">Joined Today</p>
+                          </div>
+                          <h4 class="text-secondary">12</h4>
+                      </div>
+                      <div class="card-content mt-2">
+
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <ng-container *ngIf="userAccount?.userClass === 'enthusiast'">
+        <button mat-raised-button (click)="mintVoteToken()">Mint Donor Token</button>
+      </ng-container>
+      <!-- Scientist stats -->
+      <div class="row" *ngIf="userAccount?.userClass === 'scientist'">
+
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Active Proposals</div>
+          <h4 class="m-b-10">9
+            <i class="material-icons col-red">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallAreaChart.series!" [chart]="smallAreaChart.chart!"
+                       [stroke]="smallAreaChart.stroke!" [yaxis]="smallAreaChart.yaxis!" [fill]="smallAreaChart.fill!"
+                       [colors]="smallAreaChart.colors!" [tooltip]="smallAreaChart.tooltip!"></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Funding Granted</div>
+          <h4 class="m-b-10">$75,000
+            <i class="material-icons col-green">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallColumnChart.series!" [chart]="smallColumnChart.chart!"
+                       [plotOptions]="smallColumnChart.plotOptions!" [tooltip]="smallColumnChart.tooltip!">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Funding Outstanding</div>
+          <h4 class="m-b-10">$1.2M
+            <i class="material-icons col-red">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallLineChart.series!" [chart]="smallLineChart.chart!"
+                       [stroke]="smallLineChart.stroke!" [tooltip]="smallLineChart.tooltip!"></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Community Engagement</div>
+          <h4 class="m-b-10">89%
+            <i class="material-icons col-green">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallBarChart.series!" [chart]="smallBarChart.chart!"
+                       [plotOptions]="smallBarChart.plotOptions!" [tooltip]="smallBarChart.tooltip!">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Conversations -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+      <div class="header">
+        <h1>{{ userAccount?.userClass?.toUpperCase() }}: Conversations</h1>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>add_circle_outline</mat-icon>
+            <span>Add</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>delete_outline</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>refresh</mat-icon>
+            <span>Refresh</span>
+          </button>
+        </mat-menu>
+      </div>
+      <div class="body">
+        <div id="new-orders" class="media-list position-relative">
+          <div class="table-responsive">
+            <table id="new-orders-table" class="table table-hover table-xl mb-0">
+              <thead>
+              <tr>
+                <th class="border-top-0">Proposal</th>
+                <th class="border-top-0">Group</th>
+                <th class="border-top-0">Quorum Progress</th>
+                <th class="border-top-0"></th>
+                <th class="border-top-0">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td class="text-truncate">Harvest Kinetic Energy from Air</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+6</span>
+                    </li>
+                  </ul>
+
+
+<!--                    <div style="display: block">-->
+<!--                        <canvas baseChart-->
+<!--                                [data]="pieChartData"-->
+<!--                                [labels]="pieChartLabels"-->
+<!--                                [chartType]="pieChartType"></canvas>-->
+<!--                    </div>-->
+                </td>
+                <td class="text-truncate">
+                  <div class="mb-2">
+                    <span class="progress-label">5 days remaining</span>
+                    <span class="float-end">&#x2002;Votes</span>
+                    <span class="float-end progress-percent label label-info m-b-5">76 / 100</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-green width-per-75" role="progressbar" aria-valuenow="45"
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td></td>
+                <td>
+                  <a class="link">Join Discussion</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-truncate">Increasing crop yield</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="/assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="/assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="/assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">
+                  <div class="mb-2">
+                    <span class="progress-label">2 days remaining</span>
+                    <span class="float-end">&#x2002;Votes</span>
+                    <span class="float-end progress-percent label label-danger m-b-5">17 / 100</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-red width-per-17" role="progressbar" aria-valuenow="45"
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td></td>
+                <td>
+                  <a class="link">Join Discussion</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-truncate">Reducing Carbon Emissions Through Sequestration</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+2</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">
+                  <div class="mb-2">
+                    <span class="progress-label">10 Days Remaining</span>
+                    <span class="float-end">&#x2002;Votes</span>
+                    <span class="float-end progress-percent label label-warning m-b-5">25 / 100</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-orange width-per-25" role="progressbar" aria-valuenow="25"
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td></td>
+                <td>
+                  <a class="link">Join Discussion</a>
+                </td>
+              </tr>
+<!--              <tr>-->
+<!--                <td class="text-truncate">Galaxy</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$7500</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="text-truncate">Moto Z2</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$8500</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="text-truncate">iPhone X</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$8999</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="text-truncate">iPhone X</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$8999</td>-->
+<!--              </tr>-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <!-- Widgets -->
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="box-part text-center">
+          <iframe src="https://www.youtube.com/embed/iiARfK-fxAU?si=wFrNCj5uRVCwiGxL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <br/>
+          <a href="#" onClick="return false;">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="box-part text-center">
+          <iframe src="https://www.youtube.com/embed/JY20CGezkW8?si=1neJwIecaNhhaNIV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <br/>
+          <a href="#" onClick="return false;">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="box-part text-center">
+          <iframe src="https://www.youtube.com/embed/zwvwce07jYE?si=VvW3PjO1Ap3mSW3k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <br/>
+          <a href="#" onClick="return false;">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <!-- #END# Widgets -->
+    <div class="row">
+<!--      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">-->
+<!--        <div class="card">-->
+<!--          <div class="header">-->
+<!--            <h2>Client Survay</h2>-->
+<!--            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">-->
+<!--              <mat-icon>more_vert</mat-icon>-->
+<!--            </button>-->
+<!--            <mat-menu #menu="matMenu">-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>add_circle_outline</mat-icon>-->
+<!--                <span>Add</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item disabled>-->
+<!--                <mat-icon>delete_outline</mat-icon>-->
+<!--                <span>Delete</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>refresh</mat-icon>-->
+<!--                <span>Refresh</span>-->
+<!--              </button>-->
+<!--            </mat-menu>-->
+<!--          </div>-->
+<!--          <div class="body">-->
+<!--            <apx-chart [series]="areaChartOptions.series!" [chart]="areaChartOptions.chart!"-->
+<!--              [xaxis]="areaChartOptions.xaxis!" [yaxis]="areaChartOptions.yaxis!" [colors]="areaChartOptions.colors!"-->
+<!--              [stroke]="areaChartOptions.stroke!" [legend]="areaChartOptions.legend!" [grid]="areaChartOptions.grid!"-->
+<!--              [tooltip]="areaChartOptions.tooltip!" [dataLabels]="areaChartOptions.dataLabels!"></apx-chart>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">-->
+<!--        <div class="card">-->
+<!--          <div class="header">-->
+<!--            <h2>Project Status</h2>-->
+<!--            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">-->
+<!--              <mat-icon>more_vert</mat-icon>-->
+<!--            </button>-->
+<!--            <mat-menu #menu="matMenu">-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>add_circle_outline</mat-icon>-->
+<!--                <span>Add</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item disabled>-->
+<!--                <mat-icon>delete_outline</mat-icon>-->
+<!--                <span>Delete</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>refresh</mat-icon>-->
+<!--                <span>Refresh</span>-->
+<!--              </button>-->
+<!--            </mat-menu>-->
+<!--          </div>-->
+<!--          <div class="body">-->
+<!--            <apx-chart [series]="barChartOptions.series!" [chart]="barChartOptions.chart!"-->
+<!--              [dataLabels]="barChartOptions.dataLabels!" [plotOptions]="barChartOptions.plotOptions!"-->
+<!--              [colors]="barChartOptions.colors!" [xaxis]="barChartOptions.xaxis!" [stroke]="barChartOptions.stroke!"-->
+<!--              [fill]="barChartOptions.fill!" [yaxis]="barChartOptions.yaxis!" [title]="barChartOptions.title!"-->
+<!--              [tooltip]="barChartOptions.tooltip!" [legend]="barChartOptions.legend!" [grid]="barChartOptions.grid!">-->
+<!--            </apx-chart>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+    <div class="row clearfix">
+      <!-- Task Info -->
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="header">
+            <h2>Proposals for Voting</h2>
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Add</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>delete_outline</mat-icon>
+                <span>Delete</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table table-hover dashboard-task-infos">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Pool</th>
+                    <th>Status</th>
+                    <th>Votes</th>
+                    <th>Edit/Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="table-img">
+                      <img src="assets/images/user/user1.jpg" alt="">
+                    </td>
+                    <td>Elevator Air Turbines</td>
+                    <td>Energy</td>
+                    <td>
+                      <span class="badge col-green shadow-style">Active</span>
+                    </td>
+                    <td>675</td>
+                    <td>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
+                      </button>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'trash-2'" [class]="'tbl-fav-delete'"></app-feather-icons>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-img">
+                      <img src="assets/images/user/user2.jpg" alt="">
+                    </td>
+                    <td>GMO Water Efficient Crops</td>
+                    <td>Food Technology</td>
+                    <td>
+                      <span class="badge col-red shadow-style">Canceled</span>
+                    </td>
+                    <td>32</td>
+                    <td>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
+                      </button>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'trash-2'" [class]="'tbl-fav-delete'"></app-feather-icons>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-img">
+                      <img src="assets/images/user/user3.jpg" alt="">
+                    </td>
+                    <td>Smoke Stack Filters</td>
+                    <td>Pollution</td>
+                    <td>
+                      <span class="badge col-green shadow-style">Active</span>
+                    </td>
+                    <td>453</td>
+                    <td>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
+                      </button>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'trash-2'" [class]="'tbl-fav-delete'"></app-feather-icons>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-img">
+                      <img src="assets/images/user/user4.jpg" alt="">
+                    </td>
+                    <td>Plastic Recycling Tech</td>
+                    <td>Pollution</td>
+                    <td>
+                      <span class="badge col-green shadow-style">Active</span>
+                    </td>
+                    <td>321</td>
+                    <td>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
+                      </button>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'trash-2'" [class]="'tbl-fav-delete'"></app-feather-icons>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-img">
+                      <img src="assets/images/user/user5.jpg" alt="">
+                    </td>
+                    <td>Whale Batteries</td>
+                    <td>Energy</td>
+                    <td>
+                      <span class="badge col-red shadow-style">Unsuccessful</span>
+                    </td>
+                    <td>28</td>
+                    <td>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
+                      </button>
+                      <button mat-icon-button class="tbl-action-btn">
+                        <app-feather-icons [icon]="'trash-2'" [class]="'tbl-fav-delete'"></app-feather-icons>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #END# Task Info -->
+      <!-- Browser Usage -->
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+            <ng-container *ngIf="userAccount?.userClass === 'scientist'">
+                <app-create-proposal></app-create-proposal>
+            </ng-container>
+        </div>
+      </div>
+      <!-- #END# Browser Usage -->
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+          <div class="header">
+            <h2>Earning Source</h2>
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Add</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>delete_outline</mat-icon>
+                <span>Delete</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="body">
+            <div class="totalEarning">
+              <h4>$90,808</h4>
+            </div>
+            <div class="tab-pane body" id="skills">
+              <ul class="list-unstyled">
+                <li>
+                  <div class="mb-2">
+                    <span class="progress-label">envato.com</span>
+                    <span class="float-end progress-percent label label-info m-b-5">17%</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-green width-per-45" role="progressbar" aria-valuenow="45"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="mb-2">
+                    <span class="progress-label">google.com</span>
+                    <span class="float-end progress-percent label label-danger m-b-5">27%</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-purple width-per-27" role="progressbar" aria-valuenow="27"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="mb-2">
+                    <span class="progress-label">yahoo.com</span>
+                    <span class="float-end progress-percent label label-primary m-b-5">25%</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-orange width-per-25" role="progressbar" aria-valuenow="25"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="mb-2">
+                    <span class="progress-label">store</span>
+                    <span class="float-end progress-percent label label-success m-b-5">18%</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-cyan width-per-18" role="progressbar" aria-valuenow="18"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="mb-2">
+                    <span class="progress-label">Others</span>
+                    <span class="float-end progress-percent label label-warning m-b-5">13%</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-red width-per-13" role="progressbar" aria-valuenow="13"
+                      aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Customer Review -->
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="header">
+            <h2>Customer Review</h2>
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Add</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>delete_outline</mat-icon>
+                <span>Delete</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="body">
+            <div class="review-block">
+              <div class="row">
+                <div class="review-img">
+                  <img src="assets/images/user/user1.jpg" alt="">
+                </div>
+                <div class="col">
+                  <h6 class="m-b-5">Alis Smith
+                    <span class="float-end m-r-10 text-muted font-12"> a week ago</span>
+                  </h6>
+                  <i class="material-icons col-green">star</i>
+                  <i class="material-icons col-green">star</i>
+                  <i class="material-icons col-green">star</i>
+                  <i class="material-icons col-green">star_half</i>
+                  <i class="material-icons col-green">star_border</i>
+                  <p class="m-t-15 m-b-15">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Etiam vel rutrum ex, at
+                    ornare mi. In quis scelerisque dui, eget rhoncus orci. Fusce et sodales
+                    ipsum.
+                    Nam id nunc euismod, aliquet arcu quis, mattis nisi.
+                  </p>
+                  <a href="#!">
+                    <i class="material-icons m-r-10">thumb_up</i>
+                  </a>
+                  <a href="#!">
+                    <i class="material-icons m-r-10 col-red">thumb_down</i>
+                  </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="review-img">
+                  <img src="assets/images/user/user2.jpg" alt="">
+                </div>
+                <div class="col">
+                  <h6 class="m-b-5">John Dio
+                    <span class="float-end m-r-10 text-muted font-12"> a week ago</span>
+                  </h6>
+                  <i class="material-icons col-red">star</i>
+                  <i class="material-icons col-red">star_half</i>
+                  <i class="material-icons col-red">star_border</i>
+                  <i class="material-icons col-red">star_border</i>
+                  <i class="material-icons col-red">star_border</i>
+                  <p class="m-t-15 m-b-15">Nam quis ligula est. Nunc sed risus non
+                    turpis tristique tempor. Ut sollicitudin
+                    faucibus magna nec gravida. Suspendisse ullamcorper justo vel porta
+                    imperdiet.
+                    Nunc nec ipsum vel augue placerat faucibus. </p>
+                  <a href="#!">
+                    <i class="material-icons m-r-10">thumb_up</i>
+                  </a>
+                  <a href="#!">
+                    <i class="material-icons m-r-10 col-red">thumb_down</i>
+                  </a>
+                </div>
+              </div>
+              <div class="text-center  m-b-5">
+                <button mat-stroked-button color="primary">View all Customer Reviews</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #END# Customer Review -->
+    </div>
+  </div>
+</section>

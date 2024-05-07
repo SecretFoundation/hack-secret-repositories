@@ -1,0 +1,159 @@
+@use '@angular/material' as mat;
+@use './src/app/styles/_variables.scss' as variables;
+
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define your theme with color palettes, typography and density
+$mat-theme-primary-palette: map-merge(mat.$cyan-palette, ( contrast: (100: #150c4a,)));
+$mat-theme-primary: mat.define-palette(
+    $mat-theme-primary-palette,
+  $default: 100,
+  $lighter: 100,
+  $darker: 700,
+  $text: 500
+);
+
+$mat-theme-accent-palette: map-merge(mat.$teal-palette, ( 501: #4d77b6,contrast: (501: white,A100: white,A200: white,)));
+$mat-theme-accent: mat.define-palette(
+    $mat-theme-accent-palette,
+  $default: 501,
+  $lighter: A100,
+  $darker: A200,
+  $text: 600
+);
+
+$mat-theme-warn-palette: map-merge(mat.$pink-palette, ( ));
+$mat-theme-warn: mat.define-palette(
+    $mat-theme-warn-palette,
+  $default: A200,
+  $lighter: 500,
+  $darker: 500,
+  $text: A700
+);
+
+$mat-dark-theme-primary-palette: map-merge(mat.$blue-palette, ( 501: #0033cc,201: #2158ff,601: #2b8ded,contrast: (501: #d3d4d7,A700: rgba(0,0,0, 0.87),)));
+$mat-dark-theme-primary: mat.define-palette(
+    $mat-dark-theme-primary-palette,
+  $default: 501,
+  $lighter: 201,
+  $darker: A700,
+  $text: 601
+);
+
+$mat-dark-theme-accent-palette: map-merge(mat.$light-green-palette, ( 501: #98c48c,701: #438132,contrast: (501: 900,50: 600,)));
+$mat-dark-theme-accent: mat.define-palette(
+    $mat-dark-theme-accent-palette,
+  $default: 501,
+  $lighter: 50,
+  $darker: 701,
+  $text: A100
+);
+
+$mat-dark-theme-warn-palette: map-merge(mat.$pink-palette, ( contrast: (A100: black,100: white,A700: #d3d4d7,)));
+$mat-dark-theme-warn: mat.define-palette(
+    $mat-dark-theme-warn-palette,
+  $default: A100,
+  $lighter: 100,
+  $darker: A700,
+  $text: 100
+);
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+$mat-typography: mat.define-typography-config(
+  $font-family: 'Rubik',
+  $body-2:        mat.define-typography-level($font-size: 16px, $font-weight: 400, $font-family: Rubik),
+  $body-1:        mat.define-typography-level($font-size: 18px, $font-weight: 400, $font-family: Rubik),
+  $caption:       mat.define-typography-level($font-size: 16px, $font-weight: Medium, $font-family: Rubik),
+  $button:        mat.define-typography-level($font-size: 16px, $font-weight: 500, $font-family: Rubik),
+);
+
+$mat-density: 0;
+// @include mat.elevation(
+//   $zValue: 12,
+//   $color: #000,
+//   $opacity: 0.5
+// );
+
+$mat-core-theme: mat.define-light-theme((
+  color: (
+    primary: $mat-theme-primary,
+    accent: $mat-theme-accent,
+    warn: $mat-theme-warn
+  ),
+  typography: $mat-typography,
+  density: $mat-density
+));
+
+$mat-dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $mat-dark-theme-primary,
+    accent: $mat-dark-theme-accent,
+    warn: $mat-dark-theme-warn,
+  )
+));
+
+@include mat.all-component-themes($mat-core-theme);
+
+.dark-theme {
+  @include mat.all-component-colors($mat-dark-theme);
+}
+
+.page-wrapper {
+  height: 300vh;
+  background-color: variables.$med-blue;
+}
+
+.margin-lg {
+  margin: variables.$margin-lg;
+}
+
+.button-lg {
+  padding: variables.$padding-lg !important;
+  .mdc-button__label, .mdc-label {
+    color: variables.$white;
+    font-size: x-large;
+  }
+}
+
+.center {
+  // use flexbox to center this div
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  padding: variables.$padding-md;
+}
+
+
+
+/** OVERRIDES **/
+body {
+  margin: 0px;
+}
+
+.mat-mdc-button:not(:disabled)  {
+  background-color: variables.$black !important;
+}
+
+button[disabled], .mat-mdc-button[disabled]  {
+  cursor: not-allowed !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: variables.$warn !important;
+  .mat-mdc-button:not(:disabled)  {
+    .mdc-button__label {
+      color: white;
+    }
+    background-color: variables.$med-blue !important;
+  }
+}
+
+
+
+
+
